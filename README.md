@@ -66,7 +66,7 @@ Expense-Tracker/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/Expense-Tracker.git
+git clone : https://github.com/Nehak264/Expense-Tracker
 cd Expense-Tracker
 ```
 
