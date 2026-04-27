@@ -1,8 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+    --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --text-primary: #ffffff;
+    --text-secondary: #d1d5db;
+    --accent: #00d2ff;
+    --accent-hover: #3a7bd5;
+    --danger: #ff416c;
+    --danger-hover: #ff4b2b;
+    --success: #11998e;
+    --success-hover: #38ef7d;
+}
+
 body {
-    background: url('/images/background.png') no-repeat center center fixed;
-    background-size: cover;
-    font-family: 'Arial', sans-serif;
-    color: #fff;
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
 }
@@ -11,59 +31,144 @@ body.loaded {
     opacity: 1;
 }
 
-h1, h2 {
+h1, h2, h3 {
+    font-weight: 700;
+    color: var(--text-primary);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.page-title {
     text-align: center;
-    margin-top: 20px;
-    color: #ffebcd; /* light color matching the background */
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
 }
 
-h1.form-heading, h2.form-heading {
-    color: #fff; /* white color for form headings */
-}
-
-.container {
+.glass-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    padding: 2.5rem;
     margin-top: 50px;
-    background-color: rgba(0, 0, 0, 0.6); /* semi-transparent background for better readability */
-    padding: 20px;
-    border-radius: 10px;
-    color: #fff; /* white text inside the container */
+    margin-bottom: 50px;
 }
 
-.table {
-    margin-top: 20px;
-    color: #fff; /* white text for the table */
+.glass-table {
+    width: 100%;
+    margin-top: 1rem;
+    border-collapse: separate;
+    border-spacing: 0 0.5rem;
 }
 
-.table th, .table td {
-    color: #fff; /* ensure table text is white */
+.glass-table th {
+    padding: 1rem;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--glass-border);
+    text-align: left;
 }
 
-.btn {
-    margin-right: 5px;
+.glass-table td {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    vertical-align: middle;
 }
 
-a {
-    color: #ffebcd; /* link color */
+.glass-table tr:hover td {
+    background: rgba(255, 255, 255, 0.12);
+    transform: scale(1.005);
 }
 
-a.btn {
-    color: #fff; /* button link color */
+.glass-table td:first-child { border-top-left-radius: 12px; border-bottom-left-radius: 12px; }
+.glass-table td:last-child { border-top-right-radius: 12px; border-bottom-right-radius: 12px; }
+
+.btn-custom {
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    color: #fff !important;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
 }
 
-input, button {
-    color: #000; /* black text for form elements */
-}
-
-label {
+.btn-custom:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    text-decoration: none;
     color: #fff;
 }
 
-.card {
-    background-color: rgba(255, 255, 255, 0.8); /* white background for the card with some transparency */
-    border: none;
-    border-radius: 10px;
+.btn-primary-custom { background: linear-gradient(135deg, var(--accent), var(--accent-hover)); }
+.btn-danger-custom { background: linear-gradient(135deg, var(--danger), var(--danger-hover)); }
+.btn-success-custom { background: linear-gradient(135deg, var(--success), var(--success-hover)); }
+
+.btn-sm-custom { padding: 0.4rem 0.8rem; font-size: 0.875rem; }
+
+.action-buttons a { margin-right: 0.5rem; }
+
+/* Forms */
+.glass-form-group {
+    margin-bottom: 1.5rem;
 }
 
-.card-title {
-    color: #333;
+.glass-form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.glass-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.glass-input:focus {
+    outline: none;
+    background: rgba(0, 0, 0, 0.4);
+    border-color: var(--accent);
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+}
+
+.glass-input::placeholder { color: rgba(255, 255, 255, 0.4); }
+
+.total-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--glass-border);
+}
+
+.total-amount-label {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.total-amount {
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: -webkit-linear-gradient(135deg, var(--accent), var(--success));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

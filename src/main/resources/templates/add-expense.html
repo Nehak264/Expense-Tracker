@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Add Expense</title>
+    <title>Add Expense - Sleek Tracker</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -9,31 +9,51 @@
     <script>
         $(document).ready(function() {
             $('body').addClass('loaded');
-            $('a').on('click', function(e) {
-                e.preventDefault();
+            $('a').not('.no-transition').on('click', function(e) {
                 var link = $(this).attr('href');
-                $('body').removeClass('loaded');
-                setTimeout(function() {
-                    window.location.href = link;
-                }, 500);
+                if(link && link !== "#" && !link.startsWith("javascript")) {
+                    e.preventDefault();
+                    $('body').removeClass('loaded');
+                    setTimeout(function() {
+                        window.location.href = link;
+                    }, 500);
+                }
             });
         });
     </script>
 </head>
 <body>
 <div class="container">
-    <h1 class="mt-5 form-heading">Add Expense</h1>
-    <form action="#" th:action="@{/saveExpense}" th:object="${expense}" method="post" class="mt-3">
-        <div class="form-group">
-            <label for="description">Description:</label>
-            <input type="text" id="description" name="description" th:field="*{description}" class="form-control">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="glass-container text-center">
+                <div class="mb-4">
+                    <a href="/" class="btn-custom btn-sm-custom" style="background: rgba(255,255,255,0.1); color: #fff; text-decoration: none; display: inline-block;">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </a>
+                </div>
+                
+                <h2 class="page-title mb-4">Add Expense</h2>
+                
+                <form action="#" th:action="@{/saveExpense}" th:object="${expense}" method="post" class="mt-3 text-left">
+                    <div class="glass-form-group">
+                        <label for="description"><i class="fas fa-tag"></i> Description:</label>
+                        <input type="text" id="description" name="description" th:field="*{description}" class="glass-input" placeholder="e.g. Groceries" required>
+                    </div>
+                    <div class="glass-form-group">
+                        <label for="amount"><i class="fas fa-rupee-sign"></i> Amount:</label>
+                        <input type="number" step="0.01" id="amount" name="amount" th:field="*{amount}" class="glass-input" placeholder="0.00" required>
+                    </div>
+                    
+                    <div class="mt-4 text-center">
+                        <button type="submit" class="btn-custom btn-success-custom w-100 py-2" style="font-size: 1.1rem;">
+                            <i class="fas fa-save"></i> Save Expense
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="amount">Amount:</label>
-            <input type="text" id="amount" name="amount" th:field="*{amount}" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-success">Save</button>
-    </form>
+    </div>
 </div>
 </body>
 </html>
