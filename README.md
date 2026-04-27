@@ -126,7 +126,7 @@ http://localhost:8080
 ## 👨‍💻 Author
 
 **Your Name**
-- GitHub: 
+- GitHub: https://github.com/Nehak264/Expense-Tracker
 - LinkedIn: https://www.linkedin.com/in/neha-kulkarni-99a207212/
 
 ---
